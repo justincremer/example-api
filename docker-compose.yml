@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  db:
+    image: "postgres"
+    container_name: "example-db"
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: supersecretpassword
+      PGDATA: /var/lib/postgresql/data
+    restart: always
+
+volumes:
+  pgdata:
+    external: true
